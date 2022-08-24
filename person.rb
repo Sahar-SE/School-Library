@@ -22,14 +22,5 @@ class Person
     public :can_use_services?
 end
 
-class Student < Person
-    def initialize(classroom)
-        super(age, name, parent_permission)
-        @classroom =classroom
-    end
-    def play_hooky
-        "¯\(ツ)/¯"
-    end
-end
 
 
