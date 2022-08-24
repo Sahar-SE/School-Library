@@ -21,6 +21,3 @@ class Person
 
     public :can_use_services?
 end
-
-
-
