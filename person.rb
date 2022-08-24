@@ -1,4 +1,5 @@
-class Person
+required_relative 'nameable'
+class Person < Nameable
   # accessing the attributes by attr_accessor method
   attr_accessor :name, :age
   attr_reader :id
@@ -22,4 +23,8 @@ class Person
   end
 
   public :can_use_services?
+
+  def correct_name
+    @name
+  end
 end
