@@ -1,4 +1,6 @@
 require_relative 'nameable'
+require_relative 'capitalize_decorator'
+require_relative 'trimmer_decorator'
 class Person < Nameable
   # accessing the attributes by attr_accessor method
   attr_accessor :name, :age
@@ -6,11 +8,11 @@ class Person < Nameable
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     # instance variables
+    super()
     @id = Random.rand(1..300)
     @name = name
     @age = age
     @parent_permission = parent_permission
-    super
   end
 
   def of_age?
@@ -29,3 +31,10 @@ class Person < Nameable
     @name
   end
 end
+
+person = Person.new(22, 'maximilianus')
+  person.correct_name
+  capitalizedPerson = CapitalizeDecorator.new(person)
+  capitalizedPerson.correct_name
+  capitalizedTrimmedPerson = TrimmerDecorator.new(capitalizedPerson)
+  capitalizedTrimmedPerson.correct_name
