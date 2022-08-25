@@ -1,4 +1,4 @@
-required_relative 'nameable'
+require_relative 'nameable'
 class Person < Nameable
   # accessing the attributes by attr_accessor method
   attr_accessor :name, :age
@@ -10,6 +10,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    super
   end
 
   def of_age?
