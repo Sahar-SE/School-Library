@@ -26,7 +26,6 @@ class Person < Nameable
   end
 
   public :can_use_services?
-
   def correct_name
     @name
   end
