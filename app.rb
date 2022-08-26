@@ -2,7 +2,7 @@ require_relative 'teacher'
 require_relative 'rental'
 require_relative 'book'
 require_relative 'person'
-require_relative 'student'
+require_relative 'students'
 
 class App
   def run
@@ -42,6 +42,53 @@ class App
       list_rentals
     else
       puts 'Please choose a valid option number'
+    end
+  end
+
+  def list_books
+    puts '-' * 50
+    books = Book.class_variable_get(:@@books)
+    if books.empty?
+      puts 'The books list is empty'
+    else
+      puts 'Books list:'
+      books.each_with_index do |book, index|
+        puts "[Book #{index}] Title: #{book.title} | Author: #{book.author}"
+      end
+    end
+  end
+
+  def list_people
+    puts '-' * 50
+    people = Person.class_variable_get(:@@people)
+    if people.empty?
+      puts 'The list is empty'
+    else
+      puts 'People list:'
+      people.each_with_index do |person, index|
+        if person.is_a?(Teacher)
+          puts "[Teacher #{index}] ID: #{person.id}
+          | Name: #{person.name} | Age: #{person.age} | Specialization #{person.specialization}"
+        end
+        if person.is_a?(Student)
+          puts "[Student #{index}] ID: #{person.id}
+          | Name: #{person.name} | Age: #{person.age} | Classroom #{person.classroom}"
+        end
+      end
+    end
+  end
+
+  def create_person
+    puts '-' * 50
+    puts 'Do you want to create a student (1) or a teacher (2)? [input the number]: '
+    input = gets.chomp.to_i
+    case input
+    when 1
+      create_student
+    when 2
+      create_teacher
+    else
+      puts 'Please input a valid number'
     end
   end
 
