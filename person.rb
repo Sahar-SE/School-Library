@@ -6,6 +6,8 @@ class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id
 
+  @@people = []
+
   def initialize(age, name = 'Unknown', parent_permission: true)
     # instance variables
     super()
@@ -31,7 +33,8 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(rental)
+  def add_rental(book, date)
+    rental = Rental.new(date,book,self)
     @rentals << rental
   end
 end
