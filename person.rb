@@ -6,7 +6,7 @@ class Person < Nameable
   attr_accessor :name, :age, :rentals
   attr_reader :id
 
-  @@people = []
+  @people = []
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     # instance variables
