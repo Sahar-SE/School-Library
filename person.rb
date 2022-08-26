@@ -3,7 +3,7 @@ require_relative 'capitalize_decorator'
 require_relative 'trimmer_decorator'
 class Person < Nameable
   # accessing the attributes by attr_accessor method
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rentals
   attr_reader :id
 
   @@people = []
