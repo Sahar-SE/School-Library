@@ -4,6 +4,6 @@ class Rental
   def initialize(date, book, person)
     @date = date
     @book = book
-    @rentee = person
+    @rentals = person
   end
 end
