@@ -3,17 +3,15 @@ require_relative 'capitalize_decorator'
 require_relative 'trimmer_decorator'
 class Person < Nameable
   # accessing the attributes by attr_accessor method
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rentals
   attr_reader :id
-  attr_accessor :rentals
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  def initialize(age, name = 'Unknown')
     # instance variables
     super()
     @id = Random.rand(1..300)
     @name = name
     @age = age
-    @parent_permission = parent_permission
     @rentals = []
   end
 
@@ -32,7 +30,8 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(rental)
+  def add_rental(book, date)
+    rental = Rental.new(date, book, self)
     @rentals << rental
   end
 end
