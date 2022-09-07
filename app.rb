@@ -122,20 +122,20 @@ class App
     puts "Book (#{title} By #{author}) has been created successfully"
   end
 
-  # def create_rental
-  #   if @books.empty?
-  #     puts 'Books list is empty, please create a book first'
-  #   elsif @people.empty?
-  #     puts 'People list is empty, please create a person first'
-  #   else
-  #     list_books
-  #     book_number = user_input('Select a book from the following list by number: ').to_i
-  #     list_people
-  #     person_number = user_input('Select a person from the following list by number: ').to_i
-  #     date = user_input('Date: ')
-  #     Rental.new(date, @books[book_number], @people[person_number])
-  #   end
-  # end
+  def create_rental
+    if @books.empty?
+      puts 'Books list is empty, please create a book first'
+    elsif @people.empty?
+      puts 'People list is empty, please create a person first'
+    else
+      list_books
+      book_number = user_input('Select a book from the following list by number: ').to_i
+      list_people
+      person_number = user_input('Select a person from the following list by number: ').to_i
+      date = user_input('Date: ')
+      Rental.new(date, @books[book_number], @people[person_number])
+    end
+  end
 
   def list_rentals
     list_people
