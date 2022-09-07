@@ -15,6 +15,5 @@ class Rental
       book: book,
       person: person
     }.to_json
-    @rentals = person
   end
 end

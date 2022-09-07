@@ -7,15 +7,14 @@ class Person < Nameable
   attr_reader :id
 
   # rubocop:disable Style/ClassVars
-  @@people = []
+
   # rubocop:enable Style/ClassVars
-  def initialize(age, parent_permission, name = 'Unknown')
+  def initialize(age, name = 'Unknown')
     # instance variables
     super()
     @id = Random.rand(1..300)
     @name = name
     @age = age
-    @parent_permission = parent_permission
     @rentals = []
   end
 

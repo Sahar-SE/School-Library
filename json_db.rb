@@ -1,7 +1,7 @@
 require 'json'
 
 def save_books(books)
-  JSON.dump(books, File.open('./database/book.json', 'w'))
+  JSON.dump(books, File.open('./database/books.json', 'w'))
 end
 
 def save_people(people)
@@ -13,12 +13,12 @@ def save_rentals(rentals)
 end
 
 def load_books(books)
-  json_string = JSON.parse(File.read('./database/book.json'))
+  json_string = JSON.parse(File.read('./database/books.json'))
   json_string.each do |book|
     books << Book.new(book['title'], book['author'])
   end
 rescue StandardError
-  print 'no books was saved'
+  puts 'no books was saved'
 end
 
 def load_people(people)
@@ -32,7 +32,7 @@ def load_people(people)
     end
   end
 rescue StandardError
-  print 'no person was saved'
+  puts 'no person was saved'
 end
 
 def load_rentals(rentals, books, people)
@@ -43,7 +43,7 @@ def load_rentals(rentals, books, people)
     rentals << person.add_rental(rental['date'], book)
   end
 rescue StandardError
-  print 'no rentals was saved'
+  puts 'no rentals was saved'
 end
 
 def save_state(app)

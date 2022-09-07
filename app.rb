@@ -5,9 +5,11 @@ require_relative 'person'
 require_relative 'students'
 
 class App
+  attr_accessor :books, :people, :rentals
   def initialize
-    @people = Person.class_variable_get(:@@people)
-    @books = Book.class_variable_get(:@@books)
+    @people = []
+    @books = []
+    @rentals = []
   end
 
   def user_input(text)
@@ -92,7 +94,7 @@ class App
     age = user_input('Age: ')
     case option
     when 1
-      create_student(name, age)
+      create_student(name, age, nil)
     when 2
       create_teacher(name, age)
     else
@@ -104,20 +106,20 @@ class App
     parent_permission = user_input("Has parent\'s persmission? [Y/N]: ")
     parent_permission = true if parent_permission == ('y' || 'Y')
     parent_permission = false if parent_permission == ('n' || 'N')
-    Student.new(age, classroom, name, parent_permission)
+    @people << Student.new(age, classroom, parent_permission: parent_permission, name: name)
     puts "Student (#{name}) has been created successfully"
   end
 
   def create_teacher(name, age)
     specialization = user_input("Teacher\'s specialization: ")
-    Teacher.new(age, specialization, name)
+    @people << Teacher.new(age, specialization, name: name)
     puts "Teacher (#{name}) has been created successfully"
   end
 
   def create_book
     title = user_input("Book\'s title: ")
     author = user_input("Book\'s author: ")
-    Book.new(title, author)
+    @books << Book.new(title, author)
     puts "Book (#{title} By #{author}) has been created successfully"
   end
 
@@ -132,14 +134,14 @@ class App
       list_people
       person_number = user_input('Select a person from the following list by number: ').to_i
       date = user_input('Date: ')
-      Rental.new(date, @books[book_number], @people[person_number])
+      @rentals << Rental.new(date, @books[book_number], @people[person_number])
     end
   end
 
   def list_rentals
     list_people
     input_id = user_input("Person\'s ID: ").to_i
-    selected_person = @people.select { |person| person.id = input_id }
+    selected_person = @people.select { |person| person.id == input_id }
     selected_person[0].rentals.each do |rental|
       puts "Date: #{rental.date} | Book: #{rental.book.title} By #{rental.book.author}"
     end
