@@ -5,6 +5,7 @@ class Person < Nameable
   # accessing the attributes by attr_accessor method
   attr_accessor :name, :age
   attr_reader :id
+  attr_accessor :rentals
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     # instance variables
@@ -13,6 +14,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
   def of_age?
@@ -26,8 +28,11 @@ class Person < Nameable
   end
 
   public :can_use_services?
-
   def correct_name
     @name
+  end
+
+  def add_rental(rental)
+    @rentals << rental
   end
 end
