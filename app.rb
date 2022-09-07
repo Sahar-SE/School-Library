@@ -101,19 +101,19 @@ class App
     end
   end
 
-  # def create_student(name, age, classroom)
-  #   parent_permission = user_input("Has parent\'s persmission? [Y/N]: ")
-  #   parent_permission = true if parent_permission == ('y' || 'Y')
-  #   parent_permission = false if parent_permission == ('n' || 'N')
-  #   Student.new(age, classroom, name, parent_permission)
-  #   puts "Student (#{name}) has been created successfully"
-  # end
+  def create_student(name, age, classroom)
+    parent_permission = user_input("Has parent\'s persmission? [Y/N]: ")
+    parent_permission = true if parent_permission == ('y' || 'Y')
+    parent_permission = false if parent_permission == ('n' || 'N')
+    Student.new(age, classroom, name, parent_permission)
+    puts "Student (#{name}) has been created successfully"
+  end
 
-  # def create_teacher(name, age)
-  #   specialization = user_input("Teacher\'s specialization: ")
-  #   Teacher.new(age, specialization, name)
-  #   puts "Teacher (#{name}) has been created successfully"
-  # end
+  def create_teacher(name, age)
+    specialization = user_input("Teacher\'s specialization: ")
+    Teacher.new(age, specialization, name)
+    puts "Teacher (#{name}) has been created successfully"
+  end
 
   def create_book
     title = user_input("Book\'s title: ")
