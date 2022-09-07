@@ -5,7 +5,6 @@ require_relative 'person'
 require_relative 'students'
 
 class App
-
   def initialize
     @people = Person.class_variable_get(:@@people)
     @books = Book.class_variable_get(:@@books)
@@ -28,7 +27,7 @@ class App
           5- Create a new rental entry
           6- List all rentals for a given person id
           7- Quit'
-          input = user_input('Choose an option: ').to_i
+      input = user_input('Choose an option: ').to_i
 
       break if input == 7
 
@@ -95,7 +94,7 @@ class App
     when 1
       create_student(name, age)
     when 2
-      create_student(name, age)
+      create_teacher(name, age)
     else
       puts 'Please input a valid number'
     end
