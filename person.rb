@@ -1,10 +1,14 @@
-class Person
+require_relative 'nameable'
+require_relative 'capitalize_decorator'
+require_relative 'trimmer_decorator'
+class Person < Nameable
   # accessing the attributes by attr_accessor method
   attr_accessor :name, :age
   attr_reader :id
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     # instance variables
+    super()
     @id = Random.rand(1..300)
     @name = name
     @age = age
@@ -22,4 +26,8 @@ class Person
   end
 
   public :can_use_services?
+
+  def correct_name
+    @name
+  end
 end
