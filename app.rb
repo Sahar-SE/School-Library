@@ -100,11 +100,11 @@ class App
     end
   end
 
-  def create_student(name, age, classroom)
+  def create_student(name, age)
     parent_permission = user_input("Has parent\'s persmission? [Y/N]: ")
     parent_permission = true if parent_permission == ('y' || 'Y')
     parent_permission = false if parent_permission == ('n' || 'N')
-    Student.new(age, classroom, name, parent_permission)
+    Student.new(age, name, parent_permission)
     puts "Student (#{name}) has been created successfully"
   end
 
@@ -139,9 +139,13 @@ class App
   def list_rentals
     list_people
     input_id = user_input("Person\'s ID: ").to_i
-    selected_person = @people.select { |person| person.id = input_id }
-    selected_person[0].rentals.each do |rental|
-      puts "Date: #{rental.date} | Book: #{rental.book.title} By #{rental.book.author}"
+    selected_person = @people.select { |person| person.id == input_id }
+    if selected_person.empty? || selected_person[0].rentals.empty?
+      puts "No rentals are found for (#{input_id})"
+    else
+      selected_person[0].rentals.each do |rental|
+        puts "Date: #{rental.date} | Book: #{rental.book.title} By #{rental.book.author}"
+      end
     end
   end
 end
