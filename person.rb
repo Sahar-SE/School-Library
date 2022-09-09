@@ -6,7 +6,7 @@ class Person < Nameable
   attr_accessor :name, :age, :rentals
   attr_reader :id
 
-  # sattr_accessor :rentals
+  # attr_accessor :rentals
 
   # rubocop:disable Style/ClassVars
   @@people = []
