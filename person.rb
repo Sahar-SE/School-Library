@@ -5,19 +5,11 @@ class Person < Nameable
   # accessing the attributes by attr_accessor method
   attr_accessor :name, :age, :rentals
   attr_reader :id
-
-  # attr_accessor :rentals
-
-  # rubocop:disable Style/ClassVars
-  @@people = []
-  # rubocop:enable Style/ClassVars
-  def initialize(age, parent_permission, name = 'Unknown')
     # instance variables
     super()
     @id = Random.rand(1..300)
     @name = name
     @age = age
-    @parent_permission = parent_permission
     @rentals = []
   end
 
