@@ -1,18 +1,22 @@
-class Book
-  attr_accessor :title, :author
+require './rental'
 
-  # rubocop:disable Style/ClassVars
-  @@books = []
-  # rubocop:enable Style/ClassVars
+class Book
+  attr_accessor :title, :author, :rentals
+
   def initialize(title, author)
     @title = title
     @author = author
     @rentals = []
-    @@books << self
   end
 
-  def add_rental(person, date)
-    rental = Rental.new(date, self, person)
-    @rentals << rental
+  def to_json(*_args)
+    {
+      title: title,
+      author: author
+    }.to_json
+  end
+
+  def add_rental(date, person)
+    Rental.new(date, self, person)
   end
 end

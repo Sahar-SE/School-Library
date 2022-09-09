@@ -12,12 +12,12 @@ class Person < Nameable
   @@people = []
   # rubocop:enable Style/ClassVars
   def initialize(age, parent_permission, name = 'Unknown')
+
     # instance variables
     super()
     @id = Random.rand(1..300)
     @name = name
     @age = age
-    @parent_permission = parent_permission
     @rentals = []
   end
 
