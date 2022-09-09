@@ -12,7 +12,7 @@ describe Teacher do
   end
 
   it "teacher\'s id should be 1" do
-    @teacher.id.should eq 1 
+    @teacher.id.should eq 1
   end
 
   it "teacher\'s age should be 30" do
@@ -20,14 +20,14 @@ describe Teacher do
   end
 
   it "teacher\'s specialization should be Math" do
-    @teacher.specialization.should eql 'Math' 
+    @teacher.specialization.should eql 'Math'
   end
 
   it "teacher\'s name should be Jack" do
-    @teacher.name.should eql 'Jack' 
+    @teacher.name.should eql 'Jack'
   end
 
-  it "can_use_services? should return true" do
-    @teacher.can_use_services?.should eq true 
+  it 'can_use_services? should return true' do
+    @teacher.can_use_services?.should eq true
   end
 end

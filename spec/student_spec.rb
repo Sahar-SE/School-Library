@@ -12,7 +12,7 @@ describe Student do
   end
 
   it "student\'s id should be 1" do
-    @student.id.should eq 1 
+    @student.id.should eq 1
   end
 
   it "student\'s age should be 20" do
@@ -20,18 +20,18 @@ describe Student do
   end
 
   it "student\'s classroom should be Math" do
-    @student.classroom.label.should eql 'Math' 
+    @student.classroom.label.should eql 'Math'
   end
 
   it "student\'s name should be Jack" do
-    @student.name.should eql 'Jack' 
+    @student.name.should eql 'Jack'
   end
 
   it "student\'s parent permission should be false" do
     @student.parent_permission.should eq false
   end
 
-  it "can_use_services? should return true" do
-    @student.can_use_services?.should eq true 
+  it 'can_use_services? should return true' do
+    @student.can_use_services?.should eq true
   end
 end
